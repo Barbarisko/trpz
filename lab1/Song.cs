@@ -8,10 +8,17 @@ namespace lab1
 {
     class Song
     {
-        string name;
+        public string name;
         string genre;
-        string author;
         string singer;
+        float duration;
 
+        public Song(string _name, string _genre, string _singer, float _duration)
+        {
+            name = _name;
+            genre = _genre;
+            singer = _singer;
+            duration = _duration;
+        }
     }
 }
