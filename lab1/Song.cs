@@ -9,11 +9,11 @@ namespace lab1
     class Song
     {
         public string name;
-        string genre;
-        string singer;
-        float duration;
+        public string genre;
+        public string singer;
+        decimal duration;
 
-        public Song(string _name, string _genre, string _singer, float _duration)
+        public Song(string _name, string _genre, string _singer, decimal _duration)
         {
             name = _name;
             genre = _genre;
