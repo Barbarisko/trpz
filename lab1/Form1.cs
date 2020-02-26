@@ -17,7 +17,16 @@ namespace lab1
         {
             InitializeComponent();
             jukebox = new Machine();
-            jukebox.addAlbums(getAlbumsFromFile());
+            InfoInput.getAlbums(jukebox);
+
+            listBox1.Items.Add(jukebox.albums);
+            listBox2.Items.Add(jukebox.albums[].Songs);// ??
+            listBox3.Items.Add();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
 
         }
     }

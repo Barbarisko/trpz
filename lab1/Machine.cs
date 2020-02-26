@@ -8,13 +8,11 @@ namespace lab1
 {
     class Machine
     {
-        List<Album> albums = new List<Album>();
-        //Dictionary<string, string> SAPair = new Dictionary<string, string>();
-       
-
-        public void addAlbums(string name, List<Song> songs, string releasedate, decimal price)
+        public  List<Album> albums = new List<Album>();
+     
+        public void addAlbums()
         {
-            albums.Add(new Album(name, songs, releasedate, price));
+            albums.Add(new Album());
 
         }
         public void addAlbums(List<Album> _albums)
@@ -22,7 +20,7 @@ namespace lab1
             albums.AddRange(_albums);
         }
 
-
+        //список песен подходящих по цене
         List<Song> findSortedListOfSongs(string songname, string albumname, string singer, string genre, decimal currentamount)
         {
             List<Song> songs = new List<Song>();
@@ -36,15 +34,15 @@ namespace lab1
             }
             foreach (Album al in albums)
             {
-                if (al.price <= currentamount)
+                if (al.Price <= currentamount)
                 {
                     if (albumname == null)
                     {
-                        songs.AddRange(al.songs);
+                        songs.AddRange(al.Songs);
                     }
-                    else if(albumname == al.name)
+                    else if(albumname == al.Name)
                     {
-                        foreach (Song c in al.songs)
+                        foreach (Song c in al.Songs)
                         {
                             songs.Add(c);
                         }
@@ -57,7 +55,7 @@ namespace lab1
             {
                 foreach (Song c in songs)
                 {
-                    if (c.name != songname)
+                    if (c.Name != songname)
                     {
                         songs.Remove(c);
                     }
@@ -68,7 +66,7 @@ namespace lab1
             {
                 foreach (Song c in songs)
                 {
-                    if (c.genre != genre)
+                    if (c.Genre != genre)
                     {
                         songs.Remove(c);
                     }
@@ -79,7 +77,7 @@ namespace lab1
             {
                 foreach (Song c in songs)
                 {
-                    if (c.singer != singer)
+                    if (c.Singer != singer)
                     {
                         songs.Remove(c);
                     }
@@ -89,5 +87,17 @@ namespace lab1
 
             return songs;
         }
+        
+        public void getSongs(Machine jukebox)
+        {
+            foreach (Album al in albums)
+            {
+                foreach( Song s in al.Songs)
+                {
+
+                }
+            }
+        }
+
     }
 }

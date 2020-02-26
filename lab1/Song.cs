@@ -8,17 +8,22 @@ namespace lab1
 {
     class Song
     {
-        public string name;
-        public string genre;
-        public string singer;
-        decimal duration;
+        private string name;
+        private string genre;
+        private string singer;
+        private decimal duration;
 
-        public Song(string _name, string _genre, string _singer, decimal _duration)
-        {
-            name = _name;
-            genre = _genre;
-            singer = _singer;
-            duration = _duration;
-        }
+        public string Name { get { return name; } set { name = value; } }
+        public string Genre { get { return genre; } set { genre = value; } }
+        public string Singer { get { return singer; } set { singer = value; } }
+        public decimal Duration { get { return duration; } set { duration = value; } }
+
+        //public Song(string _name, string _genre, string _singer, decimal _duration)
+        //{
+        //    name = _name;
+        //    genre = _genre;
+        //    singer = _singer;
+        //    duration = _duration;
+        //}
     }
 }
