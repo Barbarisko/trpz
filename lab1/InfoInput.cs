@@ -18,7 +18,7 @@ namespace lab1
 
             for (int i= 0; i< alArr.Length; i++)
             {
-                Album album = new Album() { Name = alArr[i + 1], Songs = new List<Song>(), Price = Convert.ToDecimal(alArr[i + 8]), Releasedate = alArr[i + 6] };
+                Album album = new Album() { Name = alArr[i + 1], Songs = new List<Song>(), Price = Convert.ToDecimal(alArr[i + 3]), Releasedate = alArr[i + 5] };
                 string pathToSongs = $"{album.Name}.txt";
 
                 if (File.Exists(pathToSongs))
@@ -34,7 +34,7 @@ namespace lab1
                     }
                 }
                 jukebox.addAlbums();
-                i = 1 + 10;
+                i = 1 + 6;
             }
         }
 

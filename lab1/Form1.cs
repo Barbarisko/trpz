@@ -20,13 +20,66 @@ namespace lab1
             InfoInput.getAlbums(jukebox);
 
             listBox1.Items.Add(jukebox.albums);
-            listBox2.Items.Add(jukebox.albums[].Songs);// ??
-            listBox3.Items.Add();
+
+            foreach (Album al in jukebox.albums)
+            {
+                foreach (Song s in al.Songs)
+                {
+
+                    listBox2.Items.Add(s.Singer);
+
+                    for (int i = 0; i < listBox2.Items.Count; i++)
+                    {
+                        for (int j = 1; j < listBox2.Items.Count; j++)
+                        {
+
+                            if (listBox2.Items[i].ToString() == listBox2.Items[j].ToString())
+                            {
+                                listBox2.Items.Remove(i);
+                            }
+                        }
+                    }
+                
+                }
+
+            }
+
+            foreach (Album al in jukebox.albums)
+            {
+                foreach (Song s in al.Songs)
+                {
+
+                    listBox3.Items.Add(s.Genre);
+
+                    for (int i = 0; i < listBox3.Items.Count; i++)
+                    {
+                        for (int j = 1; j < listBox3.Items.Count; j++)
+                        {
+
+                            if (listBox3.Items[i].ToString() == listBox3.Items[j].ToString())
+                            {
+                                listBox3.Items.Remove(i);
+                            }
+                        }
+                    }
+
+                }
+
+            }
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string text;
+            foreach (Album al in jukebox.albums)
+            {
+                foreach (Song s in al.Songs)
+                {
+                     text = Convert.ToString(jukebox.findSortedListOfSongs(s.Name, al.Name, s.Singer, s.Genre, Convert.ToDecimal(textBox1.Text)));
+                    MessageBox.Show(text);
+                }
+            }
 
         }
     }

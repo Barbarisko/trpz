@@ -21,7 +21,7 @@ namespace lab1
         }
 
         //список песен подходящих по цене
-        List<Song> findSortedListOfSongs(string songname, string albumname, string singer, string genre, decimal currentamount)
+       public List<Song> findSortedListOfSongs(string songname, string albumname, string singer, string genre, decimal currentamount)
         {
             List<Song> songs = new List<Song>();
             if (currentamount < 0)
