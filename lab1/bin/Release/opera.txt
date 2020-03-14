@@ -1,0 +1,3 @@
+name ddd duration 6 genre pop singer queen
+name rrr duration 7.7 genre rock singer queen
+name yy duration 4.5 genre pop singer queen

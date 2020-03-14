@@ -1,3 +1,1 @@
-name opera price 3,5 date 1543
-name a price 4,5 date 5559
-name b price 6 date 7777
+name opera price 35 date 1543 name a price 45 date 5559 name b price 6 date 777
