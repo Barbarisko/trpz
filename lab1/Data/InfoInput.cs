@@ -8,8 +8,6 @@ namespace lab1
 {
     class InfoInput
     {
-
-
         public static void getAlbums(Machine jukebox, Album album)
         {
             string path = @"info.txt";

@@ -72,19 +72,39 @@ namespace lab1
                 if (genre != "")
                 {
                     songs.RemoveAll(Song => Song.Genre != genre);
-
                 }
                 if (singer != "")
                 {
-                songs.RemoveAll(Song => Song.Singer != singer);
-                    
+                    songs.RemoveAll(Song => Song.Singer != singer);   
                 }
             }
             
           return songs;
         }
-        
-       
 
+        
+        
+       public Machine loadFromFile(string path)
+        {
+            SerializeJson serializeJson = new SerializeJson(typeof(Machine));
+            return (Machine)serializeJson.Deserialize(path);
+
+        }
+
+        public Machine(string path)
+        {
+            albums = loadFromFile(path).albums;
+        }
+
+        public void saveToFile(string path)
+        {
+            SerializeJson serializeJson = new SerializeJson(typeof(Machine));
+            serializeJson.Serialize(this , path);
+        }
+
+        ~Machine()
+        {
+            saveToFile(@"StandartSaveFile.txt");
+        }
     }
 }

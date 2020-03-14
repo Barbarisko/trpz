@@ -18,51 +18,48 @@ namespace lab1
         public Form1()
         {
             InitializeComponent();
-            jukebox = new Machine();
             string jsonpath = @"TestSong.json";
-            SerializeJson serializeJson = new SerializeJson(typeof(Machine));
-            jukebox = (Machine)serializeJson.Deserialize(jsonpath);
+
+            jukebox = new Machine(jsonpath);
+
 
             //jukebox.addAlbums()
+            fillListBoxes();
 
+            jukebox.saveToFile(jsonpath);
+        }
+
+        private void fillListBoxes()
+        {
             foreach (Album al in jukebox.albums)
             {
                 listBox1.Items.Add(al.Name);
 
-               foreach (Song s in al.Songs)
-               {
-                    
-                    listBox2.Items.Add(s.Singer);
-                    listBox3.Items.Add(s.Genre);
-
-                    for (int i = 0; i < listBox2.Items.Count - 1; i++)
+                foreach (Song s in al.Songs)
+                {
+                    if (!listBox2.Items.Contains(s.Singer))
                     {
-                        for (int j = 1; j < listBox2.Items.Count - 1; j++)
-                        {
-                            if (listBox2.Items[i].ToString() == listBox2.Items[j].ToString())
-                            {
-                                listBox2.Items.Remove(i);
+                        listBox2.Items.Add(s.Singer);
 
-                            }
-                        }
+                    }
+                    if (!listBox3.Items.Contains(s.Genre))
+                    {
+                        listBox3.Items.Add(s.Genre);
                     }
                 }
 
             }
-
-            //serializeJson.Serialize(jukebox.albums[0].Songs[0], jsonpath);
-            serializeJson.Serialize(jukebox, jsonpath);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           if(textBox1.Text == "")
+           if(numericUpDown1.Value <= 0)
             {
                MessageBox.Show("input money");
                return;
             }
-           sorted = jukebox.findSortedListOfSongs(Convert.ToString(listBox1.SelectedItem), Convert.ToString(listBox2.SelectedItem), Convert.ToString(listBox3.SelectedItem), Convert.ToDecimal(textBox1.Text));
+
+           sorted = jukebox.findSortedListOfSongs(Convert.ToString(listBox1.SelectedItem), Convert.ToString(listBox2.SelectedItem), Convert.ToString(listBox3.SelectedItem), numericUpDown1.Value);
 
             listBox4.Items.Clear();
             foreach ( Song i in sorted)
@@ -72,6 +69,28 @@ namespace lab1
             listBox1.SelectedIndex = -1;
             listBox2.SelectedIndex = -1;
             listBox3.SelectedIndex = -1;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox4.SelectedIndex == -1) MessageBox.Show("zhepa? ty ne vibral song");
+            else
+            {
+                Song selected = sorted[listBox4.SelectedIndex];
+                foreach (Album al in jukebox.albums)
+                {
+                    if (al.Songs.Contains(selected))
+                    {
+                        numericUpDown1.Value -= numericUpDown1.Value - al.Price;
+                    }
+                }
+                MessageBox.Show(selected.Name + " is now igraet");
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
